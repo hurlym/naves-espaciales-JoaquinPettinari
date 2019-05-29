@@ -1,0 +1,23 @@
+import NavePasajeros.*
+import NaveHospital.*
+import Nave.*
+
+describe "Nave Hospital" {
+		var nave = new NaveHospital(pasajeros = 100)	
+	test"Amenazas"{
+			nave.acelerar(10000)
+			nave.cargarComidas(1000)
+			nave.cargarBebidas(1000)
+			nave.recibirAmenaza()
+			assert.equals(20000, nave.velocidad())
+			assert.equals(900, nave.comida())
+			assert.equals(800, nave.bebida())
+			assert.that(nave.quirofanosPreparados())
+		}
+		test"Esta Tranquila"{	
+			assert.that(not nave.estaTranquila())
+			nave.cargarCombustible(5000)
+			nave.velocidad(1000)
+			assert.that(nave.estaTranquila())
+		}
+}

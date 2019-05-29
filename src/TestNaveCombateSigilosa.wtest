@@ -1,0 +1,23 @@
+import NaveCombateSigilosa.*
+import NaveCombate.*
+import Nave.*
+
+describe "Nave Combate Sigilosa" {
+	var combate = new NaveCombateSigilosa()	
+
+	test"Amenazas"{
+		combate.recibirAmenaza()
+		assert.equals("Amenaza recibida", combate.ultimoMensajeEmitido())
+		assert.equals(2, combate.direccion())
+		assert.that(combate.misilesDesplegados())
+		assert.that(combate.estaInvisible())
+	}
+	test"Esta Tranquila"{
+		assert.that(not combate.estaTranquila())
+		combate.cargarCombustible(5000)
+		combate.velocidad(1000)
+		combate.ponerseInvisible()
+		assert.that(combate.estaTranquila())
+	}
+		
+}

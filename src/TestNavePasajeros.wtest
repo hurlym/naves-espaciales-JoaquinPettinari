@@ -1,0 +1,37 @@
+import NavePasajeros.*
+import Nave.*
+
+describe "Nave Pasajeros" {
+	var nave = new NavePasajeros(pasajeros = 100)	
+		test "Bebidas/Comidas" {
+			nave.cargarComidas(15000)
+			assert.equals(15000, nave.comida())
+			nave.descargarComidas(1500000)
+			assert.equals(0, nave.comida())
+			
+			
+			nave.cargarBebidas(15000)
+			assert.equals(15000, nave.bebida())
+			nave.descargarBebidas(1500000)
+			assert.equals(0, nave.bebida())
+			
+		}
+		test"Amenazas"{
+			nave.acelerar(10000)
+			nave.cargarComidas(1000)
+			nave.cargarBebidas(1000)
+			nave.recibirAmenaza()
+			assert.equals(20000, nave.velocidad())
+			assert.equals(900, nave.comida())
+			assert.equals(800, nave.bebida())
+		}	
+		test"Preparar Viaje"{
+			nave.prepararViaje()
+			assert.equals(30000, nave.combustible())
+			assert.equals(5000, nave.velocidad())
+			assert.equals(400 , nave.comida())
+			assert.equals(600, nave.bebida())
+			assert.equals(1, nave.direccion())
+		}
+}
+

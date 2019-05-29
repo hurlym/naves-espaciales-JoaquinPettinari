@@ -1,0 +1,29 @@
+import NaveBaliza.*
+import Nave.*
+describe "Nave Baliza" {
+	var nave = new NaveBaliza()	
+
+	test "Color" {
+		nave.cambiarColorDeBaliza("rojo")
+		assert.equals("rojo", nave.color())
+	}
+	test"Amenazas"{
+		nave.recibirAmenaza()
+		assert.equals("rojo", nave.color())
+		assert.equals(10, nave.direccion())
+	}	
+	test"Preparar Viaje"{
+		nave.prepararViaje()
+		assert.equals(30000, nave.combustible())
+		assert.equals(5000, nave.velocidad())
+		assert.equals("verde", nave.color())
+		assert.equals(0, nave.direccion())
+	}
+	test"Esta Tranquila"{
+		assert.that(not nave.estaTranquila())
+		nave.cargarCombustible(5000)
+		nave.velocidad(1000)
+		nave.cambiarColorDeBaliza("verde")
+		assert.that(nave.estaTranquila())
+	}
+}

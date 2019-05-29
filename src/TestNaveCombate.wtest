@@ -1,0 +1,36 @@
+import NaveCombate.*
+import Nave.*
+describe "Nave Combate" {
+	var combate = new NaveCombate()	
+
+	test "Mensajes" {
+		combate.emitirMensaje("12345")
+		combate.emitirMensaje("67")
+		combate.emitirMensaje("89")
+		combate.emitirMensaje("101112")
+	
+		assert.equals("12345", combate.primerMensajeEmitido())
+		assert.equals("101112", combate.ultimoMensajeEmitido())
+	
+		assert.equals(4,combate.mensajesEmitidos())
+	}
+	test"Amenazas"{
+		combate.recibirAmenaza()
+		assert.equals("Amenaza recibida", combate.ultimoMensajeEmitido())
+		assert.equals(2, combate.direccion())
+	}	
+	test"Preparar Viaje"{
+		combate.prepararViaje()
+		assert.that(not combate.estaInvisible())
+		assert.that(not combate.misilesDesplegados())
+		assert.equals(30000, combate.combustible())
+		assert.equals(20000, combate.velocidad())
+		assert.equals("Saliendo en mision", combate.ultimoMensajeEmitido())
+	}
+	test"Esta Tranquila"{
+		assert.that(not combate.estaTranquila())
+		combate.cargarCombustible(5000)
+		combate.velocidad(1000)
+		assert.that(combate.estaTranquila())
+	}
+}

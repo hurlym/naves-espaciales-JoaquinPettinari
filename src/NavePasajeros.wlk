@@ -1,9 +1,9 @@
 import Nave.*
 
 class NavePasajeros inherits Nave{
-	var property pasajeros
-	var property comida
-	var property bebida
+	var property pasajeros = 0
+	var property comida = 0
+	var property bebida = 0
 	
 	method cargarComidas(cuantas){
 		comida += cuantas

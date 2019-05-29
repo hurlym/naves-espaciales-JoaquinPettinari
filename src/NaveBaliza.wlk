@@ -8,7 +8,7 @@ class NaveBaliza inherits Nave {
 	}
 	
 	override method prepararViaje(){
-		self.cambiarColorDeBaliza("Verde")
+		self.cambiarColorDeBaliza("verde")
 		self.ponerseParaleloAlSol()
 		super()
 	}
